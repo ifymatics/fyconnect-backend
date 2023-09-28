@@ -1,0 +1,29 @@
+POST http://localhost:5000/posts
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTQxNzMyNzQsImV4cCI6MTY5NDE4NDA3NCwiYXVkIjoiMTEiLCJpc3MiOiJtZWRpY2FsZGVwYXJ0dXJlcyJ9.EuDp3eK65tPO1b_QiqAVnGdxGIGAzOA1-wquUMnmmlk
+
+{
+    "desc":"first post"
+   
+    
+}
+
+###
+GET http://localhost:5000/posts
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTQxNzMyNzQsImV4cCI6MTY5NDE4NDA3NCwiYXVkIjoiMTEiLCJpc3MiOiJtZWRpY2FsZGVwYXJ0dXJlcyJ9.EuDp3eK65tPO1b_QiqAVnGdxGIGAzOA1-wquUMnmmlk
+
+###
+PATCH http://localhost:5000/posts/1
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTQxNzMyNzQsImV4cCI6MTY5NDE4NDA3NCwiYXVkIjoiMTEiLCJpc3MiOiJtZWRpY2FsZGVwYXJ0dXJlcyJ9.EuDp3eK65tPO1b_QiqAVnGdxGIGAzOA1-wquUMnmmlk
+
+{
+    "desc":"first post Updated"
+   
+    
+}
+###
+DELETE  http://localhost:5000/posts/65031e42a170ee3a7d29fbd6
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTQxNzMyNzQsImV4cCI6MTY5NDE4NDA3NCwiYXVkIjoiMTEiLCJpc3MiOiJtZWRpY2FsZGVwYXJ0dXJlcyJ9.EuDp3eK65tPO1b_QiqAVnGdxGIGAzOA1-wquUMnmmlk
