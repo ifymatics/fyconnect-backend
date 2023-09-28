@@ -17,7 +17,6 @@
         "tsConfigPath": "libs/common/tsconfig.lib.json"
       }
     },
-
     "post": {
       "type": "application",
       "root": "apps/post",
@@ -25,6 +24,15 @@
       "sourceRoot": "apps/post/src",
       "compilerOptions": {
         "tsConfigPath": "apps/post/tsconfig.app.json"
+      }
+    },
+    "auth": {
+      "type": "application",
+      "root": "apps/auth",
+      "entryFile": "main",
+      "sourceRoot": "apps/auth/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/auth/tsconfig.app.json"
       }
     }
   },
