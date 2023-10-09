@@ -5,8 +5,22 @@ services:
       dockerfile: ./apps/post/Dockerfile
       target: development
     command: npm run start:dev post
+    env_file:
+      - ./apps/post/.env
     ports:
       - '5000:5000'
+    volumes:
+      - .:/usr/src/app
+  auth:
+    build:
+      context: .
+      dockerfile: ./apps/auth/Dockerfile
+      target: development
+    command: npm run start:dev auth
+    env_file:
+      - ./apps/auth/.env
+    ports:
+      - '5001:5001'
     volumes:
       - .:/usr/src/app
   mongo:

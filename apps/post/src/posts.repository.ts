@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 // eslint-disable-next-line prettier/prettier
 import { Injectable, Logger } from '@nestjs/common';
 import { Model } from 'mongoose';

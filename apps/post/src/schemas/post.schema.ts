@@ -10,7 +10,7 @@ export class PostsDocument extends AbstractDocument {
   desc: string;
 
   @Prop({ required: true })
-  useId: number;
+  userId: string;
   @Prop()
   image: string;
 }

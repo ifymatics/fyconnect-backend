@@ -6,11 +6,11 @@ import { PostsRepository } from './posts.repository';
 @Injectable()
 export class PostsService {
   constructor(private readonly postRepository: PostsRepository) {}
-  create(createPostDto: CreatePostDto) {
+  create(createPostDto: CreatePostDto, userId: string) {
     return this.postRepository.create({
       ...createPostDto,
       timestamp: new Date(),
-      useId: 1,
+      userId,
     });
   }
 
