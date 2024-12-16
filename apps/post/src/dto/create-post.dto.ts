@@ -7,4 +7,7 @@ export class CreatePostDto {
   @IsString()
   @IsOptional()
   image: string;
+
+  // @IsString()
+  // user_id: string;
 }

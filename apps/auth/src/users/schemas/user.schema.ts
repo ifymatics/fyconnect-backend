@@ -1,5 +1,6 @@
 import { AbstractDocument } from '@app/common/database';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Exclude } from 'class-transformer';
 
 @Schema({ versionKey: false })
 export class UsersDocument extends AbstractDocument {
@@ -7,6 +8,7 @@ export class UsersDocument extends AbstractDocument {
   email: string;
 
   @Prop({ required: true })
+  @Exclude()
   password: string;
 }
 

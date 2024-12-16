@@ -4,7 +4,13 @@ Content-Type: application/json
 
 {
     "email":"ifymatics2004@gmail.com",
-    "password":"???123chCinimmmb7uu" 
+    "password":"???123chCinimmmb7uu" ,
+    "gender":"male",
+    "dob":{
+        "birth_day":"28",
+        "birth_month":"12",
+        "birth_year":"1984"
+    }
     
 }
 

@@ -33,7 +33,8 @@ export class UsersService {
     if (!passwordIsValid) {
       throw new UnauthorizedException('Invalid username or password');
     }
-    return user;
+
+    return { email: user.email, _id: user._id };
   }
   async getUser(getUserDto: GetUserDto) {
     return this.usersRepository.findOne(getUserDto);

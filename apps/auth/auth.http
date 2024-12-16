@@ -1,0 +1,7 @@
+POST http://localhost:5001/auth/login
+Content-Type: application/json
+
+{
+ "password": "???123chCinimmmb7uu" ,
+ "email":"ifymatics2004@gmail.com"
+}

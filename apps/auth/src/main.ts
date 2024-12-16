@@ -17,6 +17,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.useLogger(app.get(Logger));
   app.startAllMicroservices();
+  app.enableCors();
   await app.listen(configService.get('HTTP_PORT'));
 }
 bootstrap();
