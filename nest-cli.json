@@ -34,6 +34,51 @@
       "compilerOptions": {
         "tsConfigPath": "apps/auth/tsconfig.app.json"
       }
+    },
+    "api-gateway": {
+      "type": "application",
+      "root": "apps/api-gateway",
+      "entryFile": "main",
+      "sourceRoot": "apps/api-gateway/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/api-gateway/tsconfig.app.json"
+      }
+    },
+    "payment-service": {
+      "type": "application",
+      "root": "apps/payment-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/payment-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/payment-service/tsconfig.app.json"
+      }
+    },
+    "comment-service": {
+      "type": "application",
+      "root": "apps/comment-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/comment-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/comment-service/tsconfig.app.json"
+      }
+    },
+    "like-service": {
+      "type": "application",
+      "root": "apps/like-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/like-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/like-service/tsconfig.app.json"
+      }
+    },
+    "admin-service": {
+      "type": "application",
+      "root": "apps/admin-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/admin-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/admin-service/tsconfig.app.json"
+      }
     }
   },
   "monorepo": true,

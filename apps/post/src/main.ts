@@ -12,7 +12,7 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
   app.connectMicroservice({
     transport: Transport.TCP,
-    options: { host: '0.0.0.0', port: configService.getOrThrow('PORT') },
+    options: { host: '0.0.0.0', port: configService.getOrThrow('TCP_PORT') }, // Corrected to TCP_PORT
   });
 
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
