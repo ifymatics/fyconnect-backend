@@ -1,0 +1,2 @@
+export const POST_SERVICE = 'POST_SERVICE';
+export const COMMENT_SERVICE = 'COMMENT_SERVICE';

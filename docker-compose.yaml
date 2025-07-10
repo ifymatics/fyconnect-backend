@@ -23,5 +23,118 @@ services:
       - '5001:5001'
     volumes:
       - .:/usr/src/app
+    depends_on:
+      - mongo # Auth service depends on mongo
+      # Add postgres if auth service switches or also uses postgres
+
+  api-gateway:
+    build:
+      context: .
+      dockerfile: ./apps/api-gateway/Dockerfile # Assuming Dockerfile location
+      target: development
+    command: npm run start:dev api-gateway
+    env_file:
+      - ./apps/api-gateway/.env
+    ports:
+      - '3000:3000' # As per its .env
+    volumes:
+      - .:/usr/src/app
+    depends_on: # Depends on all backend services
+      - auth
+      - posts
+      - comment-service
+      - like-service
+      - payment-service
+
+  comment-service:
+    build:
+      context: .
+      dockerfile: ./apps/comment-service/Dockerfile
+      target: development
+    command: npm run start:dev comment-service
+    env_file:
+      - ./apps/comment-service/.env
+    ports:
+      - '3002:3002' # As per its .env (HTTP port)
+      - '5005:5005' # As per its .env (TCP port)
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - postgres
+      - posts # For validation
+
+  like-service:
+    build:
+      context: .
+      dockerfile: ./apps/like-service/Dockerfile
+      target: development
+    command: npm run start:dev like-service
+    env_file:
+      - ./apps/like-service/.env
+    ports:
+      - '3003:3003' # HTTP port
+      # No TCP port defined/needed for now unless it exposes microservice endpoints
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - postgres
+      - posts # For validation
+      - comment-service # For validation
+
+  payment-service:
+    build:
+      context: .
+      dockerfile: ./apps/payment-service/Dockerfile
+      target: development
+    command: npm run start:dev payment-service
+    env_file:
+      - ./apps/payment-service/.env
+    ports:
+      - '3001:3001' # HTTP port
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - postgres
+
+  admin-service:
+    build:
+      context: .
+      dockerfile: ./apps/admin-service/Dockerfile
+      target: development
+    command: npm run start:dev admin-service
+    env_file:
+      - ./apps/admin-service/.env
+    ports:
+      - '3004:3004' # HTTP port
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - api-gateway # Calls services through gateway
+
   mongo:
     image: mongo
+    ports: # Optional: expose mongo port for external debugging
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db # Persist mongo data
+
+  postgres:
+    image: postgres:13
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: admin # Matches DB_USERNAME in .env files
+      POSTGRES_PASSWORD: admin # Matches DB_PASSWORD in .env files
+      # To create multiple databases, one approach is to list them here if supported by the image variant
+      # Or use an init script. For now, services will connect to their respective DB_NAMEs.
+      # If DB_NAME doesn't exist, TypeORM (with synchronize:true) or the service might create it,
+      // or it might fail. Explicit creation is safer.
+      // Let's assume services will attempt to connect to their DB_NAME and it will work if POSTGRES_DB is not set,
+      // allowing connections to any database name with the valid user.
+      # POSTGRES_DB: main_db # If all services were to share one DB initially (not ideal)
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Persist postgres data
+
+volumes: # Define named volumes for data persistence
+  mongo_data:
+  postgres_data:
